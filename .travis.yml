@@ -1,0 +1,10 @@
+sudo: required #super user level permissions
+services:
+  - docker #We need a docker
+
+before_install:
+  - docker build -t arunreddy508/docker-react-demo -f Dockerfile.dev . #some series of steps that needs to occur before we deploy
+
+
+script:
+  - docker run arunreddy508/docker-react-demo npm run test -- --coverage  #The defaul behaviour of npm run test never exits
